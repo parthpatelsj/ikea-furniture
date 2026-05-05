@@ -1,13 +1,11 @@
 import type { Product } from '@/types';
-import { placeholderImage } from '@/lib/images';
 
-const make = (
-  p: Omit<Product, 'currency' | 'images'> & { imageSeeds: string[] },
-): Product => ({
+const make = (p: Omit<Product, 'currency'>): Product => ({
   ...p,
   currency: 'USD',
-  images: p.imageSeeds.map((s) => placeholderImage(s, 1200, 1200)),
 });
+
+const IKEA = 'https://www.ikea.com/us/en/images/products';
 
 export const products: Product[] = [
   make({
@@ -35,7 +33,12 @@ export const products: Product[] = [
       'Removable, machine-washable cover',
       '10-year limited warranty',
     ],
-    imageSeeds: ['glostad-1', 'glostad-2', 'glostad-3', 'glostad-4'],
+    images: [
+      `${IKEA}/glostad-sofa-knisa-dark-gray__1234948_pe917261_s5.jpg`,
+      `${IKEA}/glostad-sofa-knisa-dark-gray__1235175_pe917294_s5.jpg`,
+      `${IKEA}/glostad-sofa-knisa-dark-gray__1235915_pe917390_s5.jpg`,
+      `${IKEA}/glostad-sofa-knisa-dark-gray__1235896_pe917385_s5.jpg`,
+    ],
   }),
   make({
     id: 'morabo-sofa-gunnared-dark-gray',
@@ -60,7 +63,11 @@ export const products: Product[] = [
       'Removable, machine-washable cover',
       'Soft, durable Gunnared fabric',
     ],
-    imageSeeds: ['morabo-1', 'morabo-2', 'morabo-3'],
+    images: [
+      `${IKEA}/morabo-sofa-with-chaise-gunnared-dark-gray-metal__0602364_pe680296_s5.jpg`,
+      `${IKEA}/morabo-sofa-with-chaise-gunnared-dark-gray-metal__0816255_pe773405_s5.jpg`,
+      `${IKEA}/morabo-sofa-with-chaise-gunnared-dark-gray-metal__0813416_ph166494_s5.jpg`,
+    ],
   }),
   make({
     id: 'stockholm-sofa-seglora-natural',
@@ -83,7 +90,11 @@ export const products: Product[] = [
       '25-year limited warranty',
       'Made in Europe',
     ],
-    imageSeeds: ['stockholm-sofa-1', 'stockholm-sofa-2', 'stockholm-sofa-3'],
+    images: [
+      `${IKEA}/stockholm-sofa-seglora-natural__0183763_pe334809_s5.jpg`,
+      `${IKEA}/stockholm-sofa-seglora-natural__0820478_pe598993_s5.jpg`,
+      `${IKEA}/stockholm-sofa-seglora-natural__0212281_pe339545_s5.jpg`,
+    ],
   }),
   make({
     id: 'stockholm-2025-3-seat-sofa-alhamn-dark-brown',
@@ -102,7 +113,11 @@ export const products: Product[] = [
     materials: ['Top-grain leather', 'Solid wood frame'],
     dimensions: { width: 233, depth: 96, height: 79 },
     features: ['Hand-finished detailing', 'Replaceable cushion covers'],
-    imageSeeds: ['stockholm25-1', 'stockholm25-2'],
+    images: [
+      `${IKEA}/stockholm-2025-3-seat-sofa-alhamn-dark-brown__1362836_pe955332_s5.jpg`,
+      `${IKEA}/stockholm-2025-3-seat-sofa-alhamn-dark-brown__1424961_ph202998_s5.jpg`,
+      `${IKEA}/stockholm-2025-3-seat-sofa-alhamn-dark-brown__1421311_ph203263_s5.jpg`,
+    ],
   }),
   make({
     id: 'slattum-bed-vissle-dark-gray',
@@ -126,7 +141,11 @@ export const products: Product[] = [
       'Roll-out mattress not included',
       'Compatible with all standard queen mattresses',
     ],
-    imageSeeds: ['slattum-1', 'slattum-2', 'slattum-3'],
+    images: [
+      `${IKEA}/slattum-upholstered-bed-frame-vissle-dark-gray__1259335_pe926650_s5.jpg`,
+      `${IKEA}/slattum-upholstered-bed-frame-vissle-dark-gray__1259363_pe926663_s5.jpg`,
+      `${IKEA}/slattum-upholstered-bed-frame-vissle-dark-gray__1259338_pe926654_s5.jpg`,
+    ],
   }),
   make({
     id: 'idanas-storage-bed-naggen-beige',
@@ -148,7 +167,11 @@ export const products: Product[] = [
       'Gas-spring assisted lift',
       'Button-tufted headboard',
     ],
-    imageSeeds: ['idanas-1', 'idanas-2'],
+    images: [
+      `${IKEA}/idanaes-upholstered-storage-bed-naggen-beige__1322816_pe942270_s5.jpg`,
+      `${IKEA}/idanaes-upholstered-storage-bed-naggen-beige__1322817_pe942271_s5.jpg`,
+      `${IKEA}/idanaes-upholstered-storage-bed-naggen-beige__1322818_pe942272_s5.jpg`,
+    ],
   }),
   make({
     id: 'ramnefjall-bed-kilanda-light-beige',
@@ -166,7 +189,11 @@ export const products: Product[] = [
     materials: ['100% polyester cover', 'Solid hardwood frame'],
     dimensions: { width: 196, length: 215, height: 121 },
     features: ['Sculpted high headboard', 'Slatted base included'],
-    imageSeeds: ['ramnefjall-1', 'ramnefjall-2'],
+    images: [
+      `${IKEA}/ramnefjaell-upholstered-bed-frame-kilanda-light-beige__1258172_pe927371_s5.jpg`,
+      `${IKEA}/ramnefjaell-upholstered-bed-frame-kilanda-light-beige__1258175_pe927363_s5.jpg`,
+      `${IKEA}/ramnefjaell-upholstered-bed-frame-kilanda-light-beige__1258195_pe927382_s5.jpg`,
+    ],
   }),
   make({
     id: 'lisabo-table-4-chairs-ash-veneer',
@@ -184,7 +211,11 @@ export const products: Product[] = [
     materials: ['Ash veneer', 'Solid birch'],
     dimensions: { width: 140, depth: 78, height: 74 },
     features: ['Seats 4 comfortably', 'Tools included for assembly'],
-    imageSeeds: ['lisabo-1', 'lisabo-2', 'lisabo-3'],
+    images: [
+      `${IKEA}/lisabo-lisabo-table-and-4-chairs-ash-veneer-ash__0921113_pe787668_s5.jpg`,
+      `${IKEA}/lisabo-lisabo-table-and-4-chairs-ash-veneer-ash__1470751_pe996928_s5.jpg`,
+      `${IKEA}/lisabo-lisabo-table-and-4-chairs-ash-veneer-ash__1053173_pe846766_s5.jpg`,
+    ],
   }),
   make({
     id: 'voxlov-table-4-chairs-bamboo',
@@ -202,7 +233,11 @@ export const products: Product[] = [
     materials: ['Bamboo'],
     dimensions: { width: 180, depth: 90, height: 74 },
     features: ['Sustainable bamboo', 'Light, airy silhouette'],
-    imageSeeds: ['voxlov-1', 'voxlov-2'],
+    images: [
+      `${IKEA}/voxloev-voxloev-table-and-4-chairs-bamboo-bamboo__0926660_pe789444_s5.jpg`,
+      `${IKEA}/voxloev-voxloev-table-and-4-chairs-bamboo-bamboo__0926661_pe789443_s5.jpg`,
+      `${IKEA}/voxloev-voxloev-table-and-4-chairs-bamboo-bamboo__0997394_ph176797_s5.jpg`,
+    ],
   }),
   make({
     id: 'besta-storage-doors-oak-veneer',
@@ -224,7 +259,11 @@ export const products: Product[] = [
     materials: ['Particleboard with foil finish', 'Oak veneer doors'],
     dimensions: { width: 180, depth: 42, height: 65 },
     features: ['Soft-close hinges included', 'Cable management cutouts', 'Adjustable shelves'],
-    imageSeeds: ['besta-1', 'besta-2', 'besta-3'],
+    images: [
+      `${IKEA}/besta-storage-combination-with-doors-white-hedeviken-oesarp-oak-veneer__0994434_pe821091_s5.jpg`,
+      `${IKEA}/besta-storage-combination-with-doors-white-hedeviken-oesarp-oak-veneer__0999272_pe823241_s5.jpg`,
+      `${IKEA}/besta-storage-combination-with-doors-white-hedeviken-oesarp-oak-veneer__1060400_ph177999_s5.jpg`,
+    ],
   }),
   make({
     id: 'pax-wardrobe-white',
@@ -246,7 +285,11 @@ export const products: Product[] = [
     materials: ['Particleboard', 'Foil finish'],
     dimensions: { width: 200, depth: 60, height: 236 },
     features: ['Plan it your way in the IKEA Planner', '10-year limited warranty', 'Soft-close hinges'],
-    imageSeeds: ['pax-1', 'pax-2', 'pax-3'],
+    images: [
+      `${IKEA}/pax-wardrobe-combination-white__1382086_pe962018_s5.jpg`,
+      `${IKEA}/pax-wardrobe-combination-white__0570074_ph144610_s5.jpg`,
+      `${IKEA}/pax-wardrobe-combination-white__0563730_pe663961_s5.jpg`,
+    ],
   }),
   make({
     id: 'stockholm-2025-sideboard-oak-veneer',
@@ -265,7 +308,11 @@ export const products: Product[] = [
     materials: ['Oak veneer', 'Solid oak details'],
     dimensions: { width: 200, depth: 47, height: 80 },
     features: ['Soft-close drawers', 'Cable management', 'Adjustable feet'],
-    imageSeeds: ['stockholm-side-1', 'stockholm-side-2'],
+    images: [
+      `${IKEA}/stockholm-2025-sideboard-oak-veneer__1397699_pe967720_s5.jpg`,
+      `${IKEA}/stockholm-2025-sideboard-oak-veneer__1425273_ph203050_s5.jpg`,
+      `${IKEA}/stockholm-2025-sideboard-oak-veneer__1424765_ph203051_s5.jpg`,
+    ],
   }),
 ];
 

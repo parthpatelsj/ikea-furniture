@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-white text-ikea-black font-sans;
+  }
+
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ikea-blue ring-offset-2;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-page px-4 sm:px-6 lg:px-10;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply bg-ikea-blue text-white hover:bg-ikea-blue-dark;
+  }
+  .btn-secondary {
+    @apply border border-ikea-black bg-white text-ikea-black hover:bg-ikea-gray-50;
+  }
+  .btn-ghost {
+    @apply text-ikea-black hover:bg-ikea-gray-100;
+  }
+
+  .link-underline {
+    @apply underline decoration-1 underline-offset-2 hover:decoration-2;
+  }
+}

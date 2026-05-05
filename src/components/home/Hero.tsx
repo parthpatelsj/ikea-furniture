@@ -1,13 +1,15 @@
 import { Link } from 'react-router-dom';
-import { placeholderImage } from '@/lib/images';
+
+const HERO_IMAGE =
+  'https://www.ikea.com/us/en/images/products/stockholm-2025-3-seat-sofa-alhamn-dark-brown__1421311_ph203263_s5.jpg';
 
 export function Hero() {
   return (
     <section className="container-page mt-4">
       <div className="relative overflow-hidden rounded-2xl bg-ikea-gray-100">
         <img
-          src={placeholderImage('living-room-hero', 1800, 900)}
-          alt="A bright living room styled with a sofa, sideboard and warm wood accents."
+          src={HERO_IMAGE}
+          alt="A bright living room styled with the STOCKHOLM 2025 sofa and warm wood accents."
           className="h-[420px] w-full object-cover sm:h-[520px]"
           loading="eager"
           fetchPriority="high"

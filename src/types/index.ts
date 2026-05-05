@@ -10,7 +10,7 @@ export interface Category {
   id: CategoryId;
   name: string;
   tagline: string;
-  imageSeed: string;
+  image: string;
 }
 
 export interface ProductColor {

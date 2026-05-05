@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { categories } from '@/data/categories';
 import { Image } from '@/components/ui/Image';
-import { placeholderImage } from '@/lib/images';
 
 export function CategoryGrid() {
   return (
@@ -23,7 +22,7 @@ export function CategoryGrid() {
               className="group block focus:outline-none"
             >
               <Image
-                src={placeholderImage(cat.imageSeed, 400, 400)}
+                src={cat.image}
                 alt={cat.name}
                 aspect="square"
                 rounded

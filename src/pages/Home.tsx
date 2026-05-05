@@ -1,7 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Hero } from '@/components/home/Hero';
 import { CategoryGrid } from '@/components/home/CategoryGrid';
-import { PromoStrip } from '@/components/home/PromoStrip';
 import { ProductGrid } from '@/components/product/ProductGrid';
 import { products } from '@/data/products';
 
@@ -11,11 +9,7 @@ export default function Home() {
 
   return (
     <>
-      <Hero />
-
       <CategoryGrid />
-
-      <PromoStrip />
 
       <section className="container-page mt-16">
         <div className="mb-6 flex items-end justify-between">

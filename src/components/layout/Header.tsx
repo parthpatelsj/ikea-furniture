@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
-import { Heart, Menu, Search, ShoppingBag, User, X } from 'lucide-react';
+import { Heart, Menu, Search, ShoppingBag, X } from 'lucide-react';
 import { categories } from '@/data/categories';
 import { selectCartCount, useCart } from '@/store/cart';
 import { useWishlist } from '@/store/wishlist';
@@ -101,21 +101,6 @@ export function Header() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-ikea-gray-200 bg-white">
-      {/* Top utility bar */}
-      <div className="hidden bg-ikea-gray-50 text-xs text-ikea-gray-600 md:block">
-        <div className="container-page flex h-8 items-center justify-end gap-6">
-          <Link to="/" className="hover:underline">
-            Find a store
-          </Link>
-          <Link to="/" className="hover:underline">
-            Customer service
-          </Link>
-          <Link to="/" className="hover:underline">
-            IKEA Family
-          </Link>
-        </div>
-      </div>
-
       {/* Main bar */}
       <div className="container-page flex h-16 items-center gap-4">
         <button
@@ -135,9 +120,6 @@ export function Header() {
         </div>
 
         <nav className="ml-auto flex items-center gap-1">
-          <IconLink to="/account" label="Profile">
-            <User className="h-5 w-5" aria-hidden />
-          </IconLink>
           <IconLink to="/wishlist" label="Favorites" count={wishlistCount}>
             <Heart className="h-5 w-5" aria-hidden />
           </IconLink>

@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
+import { Model } from '@webspatial/react-sdk';
 import type { Product } from '@/types';
 import { Image } from '@/components/ui/Image';
 import { Badge } from '@/components/ui/Badge';
 import { Rating } from '@/components/ui/Rating';
 import { formatPrice } from '@/lib/format';
+import { openSpatialModel } from '@/lib/spatial';
 import { useWishlist } from '@/store/wishlist';
 import { cn } from '@/lib/cn';
 
@@ -20,19 +22,28 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   return (
     <article className="group relative flex flex-col">
       <div className="relative">
-        <Link
-          to={`/product/${product.id}`}
-          className="block"
-          aria-label={`${product.name} ${product.series}`}
+        <button
+          type="button"
+          onClick={() => openSpatialModel(product)}
+          className="block w-full overflow-hidden rounded-lg bg-ikea-gray-100 text-left"
+          aria-label={`Open ${product.name} ${product.series} in a spatial window`}
         >
-          <Image
-            src={product.images[0]}
-            alt={`${product.name} ${product.series}`}
-            aspect="square"
-            rounded
-            loading={priority ? 'eager' : 'lazy'}
-          />
-        </Link>
+          <div className="relative aspect-square w-full">
+            <Image
+              src={product.images[0]}
+              alt={`${product.name} ${product.series}`}
+              aspect="square"
+              rounded
+              loading={priority ? 'eager' : 'lazy'}
+            />
+            <Model
+              enable-xr
+              src={product.model}
+              className="absolute inset-0 h-full w-full"
+              style={{ width: '100%', height: '100%' }}
+            />
+          </div>
+        </button>
 
         <div className="absolute left-3 top-3 flex flex-col gap-1.5">
           {product.isNew && <Badge variant="new" />}

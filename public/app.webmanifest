@@ -1,0 +1,21 @@
+{
+  "name": "IKEA Spatial Catalog",
+  "short_name": "IKEA Spatial",
+  "start_url": "/",
+  "scope": "/",
+  "display": "minimal-ui",
+  "background_color": "#ffffff",
+  "theme_color": "#0058a3",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ],
+  "xr_main_scene": {
+    "default_size": { "width": 1280, "height": 800 },
+    "resizability": "any"
+  }
+}

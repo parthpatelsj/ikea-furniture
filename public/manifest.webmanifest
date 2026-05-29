@@ -1,0 +1,18 @@
+{
+  "name": "IKEA Furniture",
+  "short_name": "IKEA",
+  "description": "Affordable, well-designed furniture and home goods for every room.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0058a3",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

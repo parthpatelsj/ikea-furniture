@@ -14,5 +14,16 @@
       "type": "image/svg+xml",
       "purpose": "any"
     }
-  ]
+  ],
+  "xr_main_scene": {
+    "type": "volume",
+    "default_size": {
+      "width": 1200,
+      "height": 900,
+      "depth": 720
+    },
+    "world_scaling": "dynamic",
+    "world_alignment": "gravityAligned",
+    "baseplate_visibility": "automatic"
+  }
 }

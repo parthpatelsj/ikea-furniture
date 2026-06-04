@@ -13,13 +13,17 @@
     "moduleDetection": "force",
     "noEmit": true,
     "jsx": "react-jsx",
+    "jsxImportSource": "@webspatial/react-sdk",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "@webspatial/react-sdk": ["src/types/webspatial-sdk-shim.ts"],
+      "@webspatial/react-sdk/jsx-runtime": ["src/types/webspatial-jsx-runtime-shim.ts"],
+      "@webspatial/react-sdk/jsx-dev-runtime": ["src/types/webspatial-jsx-dev-runtime-shim.ts"]
     }
   },
   "include": ["src"]

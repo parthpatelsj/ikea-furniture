@@ -8,6 +8,7 @@
   }
 
   html {
+    --xr-background-material: translucent;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-rendering: optimizeLegibility;

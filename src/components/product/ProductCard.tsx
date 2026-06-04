@@ -1,14 +1,12 @@
 import { Link } from 'react-router-dom';
-import type { MouseEvent } from 'react';
 import { Heart } from 'lucide-react';
 import type { Product } from '@/types';
-import { ProductModel } from '@/components/spatial/ProductModel';
+import { Image } from '@/components/ui/Image';
 import { Badge } from '@/components/ui/Badge';
 import { Rating } from '@/components/ui/Rating';
 import { formatPrice } from '@/lib/format';
 import { useWishlist } from '@/store/wishlist';
 import { cn } from '@/lib/cn';
-import { getSpatialProductPath, openProductSpatialView } from '@/lib/spatial';
 
 interface ProductCardProps {
   product: Product;
@@ -19,23 +17,21 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   const isFavorite = useWishlist((s) => s.ids.includes(product.id));
   const toggle = useWishlist((s) => s.toggle);
 
-  const handleOpenSpatialView = (event: MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    openProductSpatialView(product);
-  };
-
   return (
     <article className="group relative flex flex-col">
       <div className="relative">
         <Link
-          to={getSpatialProductPath(product.id)}
-          onClick={handleOpenSpatialView}
-          className="block overflow-hidden rounded-lg bg-ikea-gray-50"
-          aria-label={`Open ${product.name} ${product.series} in spatial view`}
+          to={`/product/${product.id}`}
+          className="block"
+          aria-label={`${product.name} ${product.series}`}
         >
-          <div className="aspect-square p-4" data-priority={priority || undefined}>
-            <ProductModel product={product} />
-          </div>
+          <Image
+            src={product.images[0]}
+            alt={`${product.name} ${product.series}`}
+            aspect="square"
+            rounded
+            loading={priority ? 'eager' : 'lazy'}
+          />
         </Link>
 
         <div className="absolute left-3 top-3 flex flex-col gap-1.5">
@@ -83,11 +79,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
           )}
         </div>
 
-        <Link
-          to={getSpatialProductPath(product.id)}
-          onClick={handleOpenSpatialView}
-          className="mt-1"
-        >
+        <Link to={`/product/${product.id}`} className="mt-1">
           <h3 className="text-base font-semibold leading-tight">
             {product.name}
             <span className="block text-sm font-normal text-ikea-gray-600">

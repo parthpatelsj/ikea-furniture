@@ -5,7 +5,6 @@ import { Layout } from '@/components/layout/Layout';
 const Home = lazy(() => import('@/pages/Home'));
 const Category = lazy(() => import('@/pages/Category'));
 const Product = lazy(() => import('@/pages/Product'));
-const SpatialProduct = lazy(() => import('@/pages/SpatialProduct'));
 const Cart = lazy(() => import('@/pages/Cart'));
 const Wishlist = lazy(() => import('@/pages/Wishlist'));
 const Search = lazy(() => import('@/pages/Search'));
@@ -40,7 +39,6 @@ export const router = createBrowserRouter([
       { path: '/', element: withSuspense(<Home />) },
       { path: '/category/:categoryId', element: withSuspense(<Category />) },
       { path: '/product/:productId', element: withSuspense(<Product />) },
-      { path: '/spatial/:productId', element: withSuspense(<SpatialProduct />) },
       { path: '/cart', element: withSuspense(<Cart />) },
       { path: '/wishlist', element: withSuspense(<Wishlist />) },
       { path: '/search', element: withSuspense(<Search />) },

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
-import { Heart, ShoppingBag, Truck, Store, ShieldCheck } from 'lucide-react';
+import { Heart, ShoppingBag, Truck, Store, ShieldCheck, Box } from 'lucide-react';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Image } from '@/components/ui/Image';
 import { Rating } from '@/components/ui/Rating';
@@ -10,6 +10,8 @@ import { ProductGrid } from '@/components/product/ProductGrid';
 import { getRelatedProducts, productById } from '@/data/products';
 import { categoryById } from '@/data/categories';
 import { formatDimension, formatPrice } from '@/lib/format';
+import { modelUrlForProduct } from '@/data/models';
+import { isXR, openProductInSpace } from '@/lib/spatial';
 import { useCart } from '@/store/cart';
 import { useWishlist } from '@/store/wishlist';
 import { cn } from '@/lib/cn';
@@ -180,6 +182,17 @@ export default function Product() {
               />
             </button>
           </div>
+
+          {isXR() && modelUrlForProduct(product.id) && (
+            <button
+              type="button"
+              onClick={() => openProductInSpace(product)}
+              className="btn btn-secondary mt-3 h-12 px-6 text-base"
+            >
+              <Box className="h-5 w-5" aria-hidden />
+              View in a spatial window
+            </button>
+          )}
 
           {justAdded && (
             <div

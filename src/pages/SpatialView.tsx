@@ -5,7 +5,7 @@ import { Model } from '@webspatial/react-sdk';
 import type { ModelSpatialDragEvent, ModelSpatialMagnifyEvent } from '@webspatial/react-sdk';
 import { productById } from '@/data/products';
 import { modelUrlForProduct } from '@/data/models';
-import { isModelSupported } from '@/lib/spatial';
+import { isXR } from '@/lib/spatial';
 import { formatPrice } from '@/lib/format';
 
 /**
@@ -93,7 +93,7 @@ export default function SpatialView() {
       </div>
 
       <footer className="px-6 pb-6 text-center text-sm text-ikea-gray-600">
-        {isModelSupported()
+        {isXR()
           ? 'Drag to move and reposition · pinch to resize · grab the window to move it in space'
           : 'Open this app in a WebSpatial runtime (e.g. Apple Vision Pro) to interact with the 3D model in space.'}
       </footer>

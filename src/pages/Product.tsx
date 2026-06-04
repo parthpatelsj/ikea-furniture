@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import type { CSSProperties } from 'react';
 import { Navigate, useParams, Link } from 'react-router-dom';
 import { Heart, ShoppingBag, Truck, Store, ShieldCheck, Box } from 'lucide-react';
+import { Model } from '@webspatial/react-sdk';
 import { Breadcrumbs } from '@/components/ui/Breadcrumbs';
 import { Image } from '@/components/ui/Image';
 import { Rating } from '@/components/ui/Rating';
@@ -32,6 +34,8 @@ export default function Product() {
 
   const related = getRelatedProducts(product.id);
   const category = categoryById[product.category];
+  const modelUrl = modelUrlForProduct(product.id);
+  const showModel = isXR() && !!modelUrl;
 
   const handleAdd = () => {
     addToCart(product.id, quantity);
@@ -52,14 +56,25 @@ export default function Product() {
       <div className="mt-6 grid grid-cols-1 gap-10 lg:grid-cols-2">
         {/* Gallery */}
         <div>
-          <Image
-            src={product.images[activeImage]}
-            alt={`${product.name} ${product.series} — view ${activeImage + 1}`}
-            aspect="square"
-            rounded
-            loading="eager"
-          />
-          {product.images.length > 1 && (
+          {showModel ? (
+            <Model
+              enable-xr
+              src={modelUrl}
+              poster={product.images[0]}
+              aria-label={`${product.name} ${product.series} 3D model`}
+              className="aspect-square w-full rounded-lg bg-ikea-gray-50"
+              style={{ '--xr-depth': '320px' } as CSSProperties}
+            />
+          ) : (
+            <Image
+              src={product.images[activeImage]}
+              alt={`${product.name} ${product.series} — view ${activeImage + 1}`}
+              aspect="square"
+              rounded
+              loading="eager"
+            />
+          )}
+          {!showModel && product.images.length > 1 && (
             <ul role="list" className="mt-3 grid grid-cols-5 gap-2">
               {product.images.map((src, i) => (
                 <li key={src}>

@@ -8,9 +8,12 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "typecheck": "tsc -b --noEmit"
+    "typecheck": "tsc -b --noEmit",
+    "spatial": "webspatial-builder run --base=http://localhost:5173/"
   },
   "dependencies": {
+    "@webspatial/core-sdk": "^1.7.0",
+    "@webspatial/react-sdk": "^1.7.0",
     "lucide-react": "^0.453.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

@@ -44,6 +44,7 @@ export interface Product {
   materials: string[];
   dimensions: ProductDimensions;
   images: string[];
+  modelSrc: string;
   features: string[];
 }
 

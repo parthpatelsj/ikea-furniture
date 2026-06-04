@@ -7,9 +7,28 @@ const make = (p: Omit<Product, 'currency'>): Product => ({
 
 const IKEA = 'https://www.ikea.com/us/en/images/products';
 
+const modelSrc = (fileName: string) =>
+  new URL(`../../models/${fileName}`, import.meta.url).href;
+
+const productModels = {
+  'glostad-sofa-knisa-dark-gray': modelSrc('GLOSTAD sofa - Knisa dark gray (40573285).glb'),
+  'morabo-sofa-gunnared-dark-gray': modelSrc('MORABO sofa - Gunnared dark graymetal.glb'),
+  'stockholm-sofa-seglora-natural': modelSrc('STOCKHOLM Sofa - Seglora natural.glb'),
+  'stockholm-2025-3-seat-sofa-alhamn-dark-brown': modelSrc('STOCKHOLM 2025 3-seat sofa - Alhamn dark brown (79574298).glb'),
+  'slattum-bed-vissle-dark-gray': modelSrc('SLATTUM upholstered bed frame - Vissle dark gray (70571256).glb'),
+  'idanas-storage-bed-naggen-beige': modelSrc('IDANÄS upholstered storage bed - Naggen beige.glb'),
+  'ramnefjall-bed-kilanda-light-beige': modelSrc('RAMNEFJÄLL upholstered bed frame - Kilanda light beigeLuröy.glb'),
+  'lisabo-table-4-chairs-ash-veneer': modelSrc('LISABO  LISABO table and 4 chairs - ash veneerash (49385529).glb'),
+  'voxlov-table-4-chairs-bamboo': modelSrc('VOXLÖV  VOXLÖV table and 4 chairs - bamboobamboo.glb'),
+  'besta-storage-doors-oak-veneer': modelSrc('BESTÅ storage combination with doors - whiteHedevikenÖsarp oak veneer (59417365).glb'),
+  'pax-wardrobe-white': modelSrc('PAX wardrobe combination - white.glb'),
+  'stockholm-2025-sideboard-oak-veneer': modelSrc('STOCKHOLM 2025 sideboard - oak veneer.glb'),
+} satisfies Record<string, string>;
+
 export const products: Product[] = [
   make({
     id: 'glostad-sofa-knisa-dark-gray',
+    modelSrc: productModels['glostad-sofa-knisa-dark-gray'],
     name: 'GLOSTAD',
     series: '2-seat sofa',
     description: 'Knisa dark gray',
@@ -42,6 +61,7 @@ export const products: Product[] = [
   }),
   make({
     id: 'morabo-sofa-gunnared-dark-gray',
+    modelSrc: productModels['morabo-sofa-gunnared-dark-gray'],
     name: 'MORABO',
     series: '3-seat sofa with chaise',
     description: 'Gunnared dark gray, metal',
@@ -71,6 +91,7 @@ export const products: Product[] = [
   }),
   make({
     id: 'stockholm-sofa-seglora-natural',
+    modelSrc: productModels['stockholm-sofa-seglora-natural'],
     name: 'STOCKHOLM',
     series: '3-seat sofa',
     description: 'Seglora natural leather',
@@ -98,6 +119,7 @@ export const products: Product[] = [
   }),
   make({
     id: 'stockholm-2025-3-seat-sofa-alhamn-dark-brown',
+    modelSrc: productModels['stockholm-2025-3-seat-sofa-alhamn-dark-brown'],
     name: 'STOCKHOLM 2025',
     series: '3-seat sofa',
     description: 'Alhamn dark brown',
@@ -121,6 +143,7 @@ export const products: Product[] = [
   }),
   make({
     id: 'slattum-bed-vissle-dark-gray',
+    modelSrc: productModels['slattum-bed-vissle-dark-gray'],
     name: 'SLATTUM',
     series: 'Upholstered bed frame',
     description: 'Queen, Vissle dark gray',
@@ -149,6 +172,7 @@ export const products: Product[] = [
   }),
   make({
     id: 'idanas-storage-bed-naggen-beige',
+    modelSrc: productModels['idanas-storage-bed-naggen-beige'],
     name: 'IDANÄS',
     series: 'Upholstered storage bed',
     description: 'Queen, Naggen beige',
@@ -175,6 +199,7 @@ export const products: Product[] = [
   }),
   make({
     id: 'ramnefjall-bed-kilanda-light-beige',
+    modelSrc: productModels['ramnefjall-bed-kilanda-light-beige'],
     name: 'RAMNEFJÄLL',
     series: 'Upholstered bed frame',
     description: 'King, Kilanda light beige',
@@ -197,6 +222,7 @@ export const products: Product[] = [
   }),
   make({
     id: 'lisabo-table-4-chairs-ash-veneer',
+    modelSrc: productModels['lisabo-table-4-chairs-ash-veneer'],
     name: 'LISABO / LISABO',
     series: 'Table and 4 chairs',
     description: 'Ash veneer',
@@ -219,6 +245,7 @@ export const products: Product[] = [
   }),
   make({
     id: 'voxlov-table-4-chairs-bamboo',
+    modelSrc: productModels['voxlov-table-4-chairs-bamboo'],
     name: 'VOXLÖV / VOXLÖV',
     series: 'Table and 4 chairs',
     description: 'Bamboo',
@@ -241,6 +268,7 @@ export const products: Product[] = [
   }),
   make({
     id: 'besta-storage-doors-oak-veneer',
+    modelSrc: productModels['besta-storage-doors-oak-veneer'],
     name: 'BESTÅ',
     series: 'Storage combination with doors',
     description: 'White / Hedeviken oak veneer',
@@ -267,6 +295,7 @@ export const products: Product[] = [
   }),
   make({
     id: 'pax-wardrobe-white',
+    modelSrc: productModels['pax-wardrobe-white'],
     name: 'PAX',
     series: 'Wardrobe combination',
     description: 'White',
@@ -293,6 +322,7 @@ export const products: Product[] = [
   }),
   make({
     id: 'stockholm-2025-sideboard-oak-veneer',
+    modelSrc: productModels['stockholm-2025-sideboard-oak-veneer'],
     name: 'STOCKHOLM 2025',
     series: 'Sideboard',
     description: 'Oak veneer',

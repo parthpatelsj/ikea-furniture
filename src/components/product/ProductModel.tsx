@@ -41,19 +41,29 @@ export function ProductModel({ product, priority = false }: ProductModelProps) {
     );
   }
 
-  // The wrapping Link handles in-window navigation for pointer clicks; the
-  // model's spatial tap is forwarded to the same in-window navigation.
+  // In XR the model is a portaled spatialized element, so we don't wrap it in an
+  // anchor (a nested <a> around a portaled child is unreliable). Instead the
+  // model itself navigates within the current window/scene via the router — both
+  // for a pointer click and a spatial tap. This is in-window navigation
+  // (history pushState), NOT window.open, so it does not spawn a new scene.
   return (
-    <Link to={to} className="block" aria-label={label}>
-      <Model
-        enable-xr
-        src={modelUrl}
-        poster={product.images[0]}
-        aria-hidden
-        onSpatialTap={() => navigate(to)}
-        className="block aspect-square w-full cursor-pointer rounded-lg bg-ikea-gray-50"
-        style={{ '--xr-depth': '180px' } as CSSProperties}
-      />
-    </Link>
+    <Model
+      enable-xr
+      src={modelUrl}
+      poster={product.images[0]}
+      role="button"
+      tabIndex={0}
+      aria-label={label}
+      onClick={() => navigate(to)}
+      onSpatialTap={() => navigate(to)}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          navigate(to);
+        }
+      }}
+      className="block aspect-square w-full cursor-pointer rounded-lg bg-ikea-gray-50"
+      style={{ '--xr-depth': '180px' } as CSSProperties}
+    />
   );
 }

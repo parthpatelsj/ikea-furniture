@@ -20,21 +20,6 @@
   *:focus-visible {
     @apply outline-none ring-2 ring-ikea-blue ring-offset-2;
   }
-
-  /*
-   * WebSpatial / XR layout adaptation.
-   *
-   * In a WebSpatial Runtime the page gets a very large (~2700px) square
-   * viewport. Without this, the storefront (capped at max-w-page) renders as a
-   * tiny island in a huge white surface. Zooming the document root scales the
-   * whole UI up to a comfortable apparent size and shrinks the effective
-   * viewport toward a normal desktop width, so the existing responsive layout
-   * still applies. The flag is only set in XR, so the normal browser layout is
-   * untouched.
-   */
-  html.xr-mode {
-    zoom: 1.8;
-  }
 }
 
 @layer components {

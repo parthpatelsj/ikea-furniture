@@ -99,6 +99,19 @@ Vite + React + TypeScript storefront. Reference docs: `https://webspatial.dev/ll
   already have a manifest," but don't enumerate which fields WebSpatial actually
   reads (start-scene / scene options apparently live under undocumented
   `manifest-options`).
+- **Start-scene sizing is the real fix for the "tiny storefront in a huge
+  surface" problem.** The runtime gives the start window a very large (~2700px)
+  square viewport by default. Setting `xr_main_scene.default_size` (and
+  `xr_spatial_scene` for runtime-opened window scenes) in the manifest to a
+  normal size like `1920×1080` makes the storefront render at a comfortable
+  apparent size — far cleaner than compensating with CSS `zoom`. This is
+  undocumented in `llms-full.txt`; the schema is only discoverable from the
+  shipped `PWAManifest`/`XRPrdConfig` TypeScript types.
+- **`default_size` vs `defaultSize` footgun.** The manifest scene-size key is
+  snake_case `default_size` (`XRSceneSize`), but the runtime's JS
+  `SpatialSceneCreationOptions` (used by `initScene`) uses camelCase
+  `defaultSize`. The two config surfaces disagree on casing, and a camelCase key
+  in the manifest is silently ignored.
 
 ## Documentation Gaps
 

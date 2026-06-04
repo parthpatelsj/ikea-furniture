@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Heart } from 'lucide-react';
 import type { Product } from '@/types';
-import { Image } from '@/components/ui/Image';
+import { ProductModel } from '@/components/product/ProductModel';
 import { Badge } from '@/components/ui/Badge';
 import { Rating } from '@/components/ui/Rating';
 import { formatPrice } from '@/lib/format';
@@ -20,19 +20,7 @@ export function ProductCard({ product, priority = false }: ProductCardProps) {
   return (
     <article className="group relative flex flex-col">
       <div className="relative">
-        <Link
-          to={`/product/${product.id}`}
-          className="block"
-          aria-label={`${product.name} ${product.series}`}
-        >
-          <Image
-            src={product.images[0]}
-            alt={`${product.name} ${product.series}`}
-            aspect="square"
-            rounded
-            loading={priority ? 'eager' : 'lazy'}
-          />
-        </Link>
+        <ProductModel product={product} priority={priority} />
 
         <div className="absolute left-3 top-3 flex flex-col gap-1.5">
           {product.isNew && <Badge variant="new" />}

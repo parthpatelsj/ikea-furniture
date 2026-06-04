@@ -8,6 +8,7 @@ const Product = lazy(() => import('@/pages/Product'));
 const Cart = lazy(() => import('@/pages/Cart'));
 const Wishlist = lazy(() => import('@/pages/Wishlist'));
 const Search = lazy(() => import('@/pages/Search'));
+const SpatialView = lazy(() => import('@/pages/SpatialView'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
 
 function PageFallback() {
@@ -45,4 +46,7 @@ export const router = createBrowserRouter([
       { path: '*', element: withSuspense(<NotFound />) },
     ],
   },
+  // Standalone Spatial Scene (opened in its own WebSpatial window) — rendered
+  // without the site chrome so the scene contains only the focused 3D model.
+  { path: '/spatial/:productId', element: withSuspense(<SpatialView />) },
 ]);

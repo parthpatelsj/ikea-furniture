@@ -1,15 +1,21 @@
-import { initScene } from '@webspatial/react-sdk';
+import { initScene, WebSpatialRuntime } from '@webspatial/react-sdk';
 import type { Product } from '@/types';
 
 /**
- * Whether the current runtime can render the WebSpatial `<Model>` element as a
- * real 3D object. Inside a WebSpatial Runtime (visionOS via WebSpatial Builder,
- * PICO OS 6, ...) the `<model>` element is available, so we use that as a proxy
- * for "spatial features are active". On a regular desktop/mobile browser this is
- * `false`, and the catalog gracefully falls back to 2D product imagery.
+ * Whether we are running inside a WebSpatial Runtime (visionOS via WebSpatial
+ * Builder, PICO OS 6, ...) where spatial features such as the `<Model>` element
+ * are available. On a regular desktop/mobile browser this is `false`, and the
+ * catalog gracefully falls back to 2D product imagery.
+ *
+ * Uses the SDK's public capability probe rather than ad-hoc DOM sniffing.
  */
-export function isModelSupported(): boolean {
-  return typeof window !== 'undefined' && 'HTMLModelElement' in window;
+export function isXR(): boolean {
+  if (typeof window === 'undefined') return false;
+  try {
+    return WebSpatialRuntime.supports('Model');
+  } catch {
+    return false;
+  }
 }
 
 /** Stable Spatial Scene name for a product, so re-clicking focuses the same scene. */

@@ -34,6 +34,11 @@ export function sceneNameForProduct(id: string): string {
 export function openProductInSpace(product: Product): void {
   const name = sceneNameForProduct(product.id);
 
+  // We set `defaultSize` explicitly here, so the volume size does not depend on
+  // manifest-derived defaults — no need to await the (internal, non-exported)
+  // SceneManager.waitManifest(). The opened window also re-resolves the manifest
+  // internally before the scene is created.
+  //
   // `initScene` is a no-op outside a WebSpatial Runtime; guard so the regular
   // web build never throws.
   try {
@@ -41,7 +46,8 @@ export function openProductInSpace(product: Product): void {
       name,
       (defaultConfig) => ({
         ...defaultConfig,
-        defaultSize: { width: '1.6m', height: '1.2m', depth: '1.2m' },
+        // ~1.5m wide ≈ normal furniture preview size.
+        defaultSize: { width: '1.5m', height: '1.2m', depth: '1.2m' },
       }),
       // Scene `type` is configured via the options argument (see confusion.md —
       // the docs example instead returns `type` inside the callback object).

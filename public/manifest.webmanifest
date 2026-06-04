@@ -16,13 +16,14 @@
     }
   ],
   "xr_main_scene": {
-    "default_size": { "width": "1920px", "height": "1080px" }
+    "type": "window",
+    "default_size": { "width": "2.2m", "height": "1.4m" }
   },
   "xr_spatial_scene": {
-    "default_size": { "width": "1920px", "height": "1080px" },
+    "default_size": { "width": "2.2m", "height": "1.4m" },
     "overrides": {
       "window_scene": {
-        "default_size": { "width": "1920px", "height": "1080px" }
+        "default_size": { "width": "2.2m", "height": "1.4m" }
       }
     }
   }

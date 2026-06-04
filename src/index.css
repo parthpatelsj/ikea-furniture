@@ -20,6 +20,24 @@
   *:focus-visible {
     @apply outline-none ring-2 ring-ikea-blue ring-offset-2;
   }
+
+  /*
+   * WebSpatial / XR layout adaptation (runtime fallback).
+   *
+   * The build-time `xr_main_scene` size in the web app manifest is the proper
+   * fix for the start window, but it only applies after a WebSpatial Builder
+   * rebuild. As a runtime fallback that works without repackaging, when XR mode
+   * is detected we flag `html.xr-mode` and zoom the document root so the
+   * storefront renders at a comfortable apparent size instead of a tiny island
+   * in a large surface. The flag is XR-only, so the normal browser layout is
+   * untouched.
+   *
+   * NOTE: the correct selector is `html.xr-mode` (the class is on <html>), not
+   * `.xr-mode html` — the latter never matches since nothing contains <html>.
+   */
+  html.xr-mode {
+    zoom: 2.2;
+  }
 }
 
 @layer components {

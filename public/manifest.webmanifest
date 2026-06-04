@@ -14,5 +14,16 @@
       "type": "image/svg+xml",
       "purpose": "any"
     }
-  ]
+  ],
+  "xr_main_scene": {
+    "default_size": { "width": "1920px", "height": "1080px" }
+  },
+  "xr_spatial_scene": {
+    "default_size": { "width": "1920px", "height": "1080px" },
+    "overrides": {
+      "window_scene": {
+        "default_size": { "width": "1920px", "height": "1080px" }
+      }
+    }
+  }
 }

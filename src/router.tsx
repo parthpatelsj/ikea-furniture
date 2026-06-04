@@ -9,6 +9,7 @@ const Cart = lazy(() => import('@/pages/Cart'));
 const Wishlist = lazy(() => import('@/pages/Wishlist'));
 const Search = lazy(() => import('@/pages/Search'));
 const NotFound = lazy(() => import('@/pages/NotFound'));
+const Spatial = lazy(() => import('@/pages/Spatial'));
 
 function PageFallback() {
   return (
@@ -33,6 +34,7 @@ const withSuspense = (node: React.ReactNode) => (
 );
 
 export const router = createBrowserRouter([
+  { path: '/spatial/:productId', element: withSuspense(<Spatial />) },
   {
     element: <Layout />,
     children: [

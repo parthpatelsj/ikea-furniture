@@ -1,8 +1,11 @@
 import type { Product } from '@/types';
 
-const make = (p: Omit<Product, 'currency'>): Product => ({
+const make = (
+  p: Omit<Product, 'currency' | 'model'> & { model?: string },
+): Product => ({
   ...p,
   currency: 'USD',
+  model: p.model ?? `/models/${p.id}.glb`,
 });
 
 const IKEA = 'https://www.ikea.com/us/en/images/products';

@@ -45,6 +45,7 @@ export interface Product {
   dimensions: ProductDimensions;
   images: string[];
   features: string[];
+  model: string;
 }
 
 export interface CartItem {
